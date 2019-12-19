@@ -16,9 +16,9 @@ module fas (
 	logic e;
 	logic f;
 	logic g;
-	logic h;
+	logic i;
 	
-	logic b_xnor_cin;
+
 	
 	// This is the logic for cout
 	NAND2 #(
@@ -64,7 +64,25 @@ module fas (
 	) NAND2_Cinstance (
 		.A(d),
 		.B(g),
-		.Z(Z)
+		.Z(cout)
+	);
+	
+	XNOR2 #(
+		.Tpdlh(xnor_tpd),
+		.Tpdhl(xnor_tpd)
+	) XNOR2_A (
+		.A(b),
+		.B(cin),
+		.Z(i)
+	);
+	
+	XNOR2 #(
+		.Tpdlh(xnor_tpd),
+		.Tpdhl(xnor_tpd)
+	) XNOR2_B (
+		.A(a),
+		.B(i),
+		.Z(s)
 	);
 	// This is the logic for s
 
