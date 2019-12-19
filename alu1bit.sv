@@ -30,8 +30,8 @@ NAND2 #(
 	.Tpdlh(nand_tpd),
 	.Tpdhl(nand_tpd)
 ) NAND_xor (
-	.A(a),
-	.B(b),
+	.A(xnor_result),
+	.B(xnor_result),
 	.Z(xor_result)
 );
 
