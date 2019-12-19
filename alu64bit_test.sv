@@ -44,7 +44,48 @@ module alu64bit_test;
 		#40ns;
 		cin = 1'b1;
 		
+		// check xnor
 		#40ns;
+		op = 2'b01;
+		
+		// check add
+		#40ns;
+		cin = 1'b0;
+		a = {{32{2'b01}}};
+		b = {{32{2'b10}}};
+		
+		op = 2'b10;
+		
+		#40ns;
+		cin = 1'b1;
+		
+		// check sub
+		#40ns;
+		
+		// a biggr and no carry
+		cin = 1'b0;
+		a = {{60{1'b0}}, 4'b1111};
+		b = {{60{1'b0}}, 4'b1001};
+		
+		op = 2'b11;
+		
+		#40ns;
+		
+		// a biggr and carry
+		cin = 1'b1;
+		#40ns;
+		
+		// a smaller no carry
+		cin = 1'b0;
+		a = {{60{1'b0}}, 4'b0001};
+		b = {{60{1'b0}}, 4'b1011};
+		
+		op = 2'b11;
+		
+		#40ns;
+		
+		// a smaller with carry
+		cin = 1'b1;
 		
 
 	end;
