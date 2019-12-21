@@ -8,7 +8,7 @@ module mux4_test;
 	logic[1:0] sel;
 	logic z;
 	
-	parameter nand_tpd = 5;
+	parameter nand_tpd = 10;
 	
 	mux4 #(
 		.nand_tpd(nand_tpd)
@@ -26,31 +26,26 @@ module mux4_test;
 		// set all parameters for shortest time.
 		d0 = 1'b0;
 		d1 = 1'b0;
-		d2 = 1'b0;
-		d3 = 1'b0;
-		sel = 2'b0;
+		d2 = 1'b1;
+		d3 = 1'b1;
+		sel = 2'b01;
 		
 		// change for shortest time.
-		#40ns;
-		d0 = 1;
+		#100ns;
+		sel[1] = 1'b1;
 		
-		// wait until stable
-		#40ns;
-		
+		// return to original.
+		#100ns;
 		// set all parameters for longest time.
-		d0 = 1'b1;
+		d0 = 1'b0;
 		d1 = 1'b0;
-		d2 = 1'b0;
+		d2 = 1'b1;
 		d3 = 1'b0;
-		sel = 2'b0;
+		sel = 2'b11;
 		
 		// change for longest time.
-		#40ns;
-		sel = 2'b01;
-//		d0 = 1'b0;
-		
-		// wait until stable
-		#40ns;
+		#100ns;
+		sel[0] = 1'b0;
 		
 	end
 

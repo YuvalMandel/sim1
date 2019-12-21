@@ -8,7 +8,7 @@ module mux4 (
     output logic z           // Output
 );
 
-parameter nand_tpd = 1;
+parameter nand_tpd = 10;
 
 logic d0_d1_selected;
 logic d2_d3_selected;

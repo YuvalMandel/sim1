@@ -10,9 +10,9 @@ module fas_test;
 	
 	logic[1:0] result;
 
-	parameter nand_tpd = 0;
-	parameter or_tpd = 0;
-	parameter xnor_tpd = 0;
+	parameter nand_tpd = 10;
+	parameter xnor_tpd = 9;
+	parameter or_tpd = 8;
 
 	fas #(
 		.nand_tpd(nand_tpd),
@@ -34,37 +34,57 @@ module fas_test;
 	initial begin
 
 		// set all parameters for shortest time.
-		a = 1'b0;
+		a = 1'b1;
 		b = 1'b0;
 		cin = 1'b0;
 		a_ns = 1'b0;
 		
-		#40ns;
+		#100ns;
+		
+		// chane a to 0
+		a = 1'b0;
+		
+		#100ns;
+		
+		// set all parameters for shortest time.
+		a = 1'b0;
+		b = 1'b0;
+		cin = 1'b1;
+		a_ns = 1'b1;
+		
+		#100ns;
+		
+		// chane a to 1
+		a = 1'b1;
+		
+		#100ns;
+		
+		//
 	
-		for(int i = 0; i < 2; i++) begin
-			
-			a_ns <= !a_ns;
-		
-			for(int i = 0; i < 2; i++) begin
-		
-				cin <= !cin;
-				
-				for(int i = 0; i < 2; i++) begin
-		
-					b <= !b;
-					
-					for(int i = 0; i < 2; i++) begin
-		
-						a <= !a;
-						#40ns;
-		
-					end
-		
-				end
-		
-			end
-		
-		end
+//		for(int i = 0; i < 2; i++) begin
+//			
+//			a_ns <= !a_ns;
+//		
+//			for(int i = 0; i < 2; i++) begin
+//		
+//				cin <= !cin;
+//				
+//				for(int i = 0; i < 2; i++) begin
+//		
+//					b <= !b;
+//					
+//					for(int i = 0; i < 2; i++) begin
+//		
+//						a <= !a;
+//						#40ns;
+//		
+//					end
+//		
+//				end
+//		
+//			end
+//		
+//		end
 
 	end;
 
